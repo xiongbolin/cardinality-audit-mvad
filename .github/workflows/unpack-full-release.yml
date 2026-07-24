@@ -1,0 +1,71 @@
+name: Unpack full reproducibility release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - CARDINALITY_AUDIT_FULL_UPLOAD.zip
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify and unpack upload
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f CARDINALITY_AUDIT_FULL_UPLOAD.zip
+          echo "f1fbfb90486c75a73027eb330104a9a7607bfeb53ef5426d61bacb6e4e7f221a  CARDINALITY_AUDIT_FULL_UPLOAD.zip" | sha256sum -c -
+          rm -rf .release-unpack
+          mkdir .release-unpack
+          unzip -q CARDINALITY_AUDIT_FULL_UPLOAD.zip -d .release-unpack
+          test -d .release-unpack/cardinality-audit-mvad
+          rsync -a --delete-excluded \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude '__pycache__/' \
+            --exclude '.pytest_cache/' \
+            --exclude '*.pyc' \
+            .release-unpack/cardinality-audit-mvad/ ./
+          rm -rf .release-unpack CARDINALITY_AUDIT_FULL_UPLOAD.zip release_parts release_chunks_v1
+
+      - name: Validate release contents
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          pytest -q
+          test -f code/run_cardinality_audit.py
+          test -f data/rad_image_scores/dinov2_vit_b14_visual_image_scores.csv
+          test -f figures/CA-FIG-04_realiad_controlled_cardinality_stress.png
+          count=$(find . -type f \
+            ! -path './.git/*' \
+            ! -path './.github/*' \
+            ! -path '*/__pycache__/*' \
+            ! -path '*/.pytest_cache/*' \
+            ! -name '*.pyc' | wc -l)
+          test "$count" -eq 62
+
+      - name: Commit complete repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Publish complete reproducibility release"
+            git push
+          fi
