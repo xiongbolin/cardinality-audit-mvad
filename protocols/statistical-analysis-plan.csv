@@ -1,0 +1,7 @@
+analysis_id,estimand,method,uncertainty,unit,decision_use
+CA-S1,AUROC and AUPRC per scorer-aggregator-design cell,sklearn rank metrics,category-stratified bootstrap 2000 repeats,group/sample,performance and null assessment
+CA-S2,full minus equal-view AUROC,paired repetition difference,empirical 2.5/97.5 percentiles,registered cell,confounding magnitude
+CA-S3,normal score dependence on group size,Spearman rho and OLS slope with intercept,category bootstrap,normal group/sample,cardinality sensitivity
+CA-S4,method rank reversal,compare ordinal ranks under full and equal-view summaries,flag only when paired interval excludes zero or rank change >=2,scorer within aggregator/design,practical consequence
+CA-S5,null guardrail,distance of null AUROC from 0.5,empirical repeat interval,aggregator/control,mechanism support or failure
+CA-S6,view budget cost curve,AUROC/AUPRC by m and marginal gain,repeat interval,Real-IAD sample,efficiency interpretation

@@ -1,0 +1,6 @@
+control_id,dataset,score_generation,cardinality_assignment,labels,repetitions,expected_result,failure_flag
+CA-N1,RAD,IID standard normal per view,observed group sizes,observed,1000,extreme aggregators may exceed chance if size and label associate,no inflation despite strong size-label association
+CA-N2,RAD,permute frozen view scores globally within scorer,observed group sizes,observed,1000,tests empirical score distribution with identity removed,fixed-order AUROC excludes chance
+CA-N3,Real-IAD,IID standard normal per available camera position,independent_1to5: uniform random budget 1..5 independent of label,observed,1000,all aggregators near unconfounded reference,systematic label discrimination from assignment alone
+CA-N4,Real-IAD,IID standard normal per available camera position,correlated_1to5: normal 1..2 vs anomaly 4..5; correlated_4to5: normal 4 vs anomaly 5,observed,1000,extreme conventional aggregators inflate under correlated_1to5; fixed-order kernels remain near chance under correlated_4to5,no differential response between extreme and fixed-order families
+CA-N5,both,IID standard normal,equal fixed budget,observed,1000,all aggregators near chance,implementation-induced discrimination

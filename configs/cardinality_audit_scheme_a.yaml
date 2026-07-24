@@ -1,0 +1,27 @@
+workflow_version: '4.7'
+protocol_id: CA-G4-001
+status: frozen_retrospective
+aggregators:
+  - mean
+  - max
+  - top2
+  - top3
+  - q75
+  - q90
+  - lse
+  - logmeanexp
+  - u2_max
+  - u3_top2
+  - u4_top3
+subset_cap: 128
+tau: 1.0
+seeds: [42, 43, 44]
+repetitions:
+  rad_equal: 1000
+  rad_size_null: 1000
+  rad_permutation: 1000
+  bootstrap: 2000
+  realiad_null: 1000
+rad_equal_budget: 4
+realiad_view_positions: [C1, C2, C3, C4, C5]
+output_status: retrospective_audit_only

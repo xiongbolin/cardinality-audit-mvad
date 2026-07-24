@@ -1,0 +1,8 @@
+experiment_id,dataset,design,scorers,aggregators,repetitions,primary_outputs,inference_status
+CA-E01,RAD,Observed full-group audit with natural cardinalities 4-68,all registered RAD scorers,all,deterministic,full metrics;size dependence,retrospective empirical
+CA-E02,RAD,Equal-view four-image resampling without replacement,all registered RAD scorers,all compatible,1000 per seed,AUROC/AUPRC distribution;ranking reversal,retrospective controlled
+CA-E03,RAD,Size-only and score-permutation null preserving observed group sizes,synthetic and all registered RAD score pools,all,1000,null AUROC;normal size slope,diagnostic simulation
+CA-E04,Real-IAD,Exact global camera-position subset sweep across C1-C5 for budgets m=1..5,subspace_raw;subspace_loge;knn_raw;knn_loge,all compatible,31 deterministic designs total; all combinations per budget,design-level and budget-level performance-cost curve;rank stability,retrospective controlled
+CA-E05,Real-IAD,Label-independent synthetic cardinality assignment 1..5 using IID scores,subspace_raw;subspace_loge;knn_raw;knn_loge,all,1000,null AUROC,diagnostic simulation
+CA-E06,Real-IAD,Label-correlated synthetic cardinality stress tests: 1..2 vs 4..5 and fixed-order-compatible 4 vs 5,subspace_raw;subspace_loge;knn_raw;knn_loge,all,1000,confounding amplification,diagnostic simulation
+CA-E07,RAD,Category/defect-stratified and matched-size sensitivity analyses,all registered RAD scorers,selected by registry not outcomes,2000 category bootstrap,stratified slopes;matched estimates,retrospective sensitivity

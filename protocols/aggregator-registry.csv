@@ -1,0 +1,12 @@
+aggregator_id,family,definition,parameters,fixed_order,expected_cardinality_risk,status
+mean,central,arithmetic mean of all available view scores,none,no,low expectation drift; variance changes,frozen
+max,extreme,maximum view score,none,no,high,frozen
+top2,extreme,mean of two largest scores; use all scores if fewer than two,k=2,no,high,frozen
+top3,extreme,mean of three largest scores; use all scores if fewer than three,k=3,no,high,frozen
+q75,quantile,linear 0.75 empirical quantile,q=0.75,no,moderate,frozen
+q90,quantile,linear 0.90 empirical quantile,q=0.90,no,moderate-high,frozen
+lse,soft_extreme,log(sum(exp(score/tau))) times tau with stable centering,tau=1.0,no,high by construction,frozen
+logmeanexp,soft_extreme_normalized,log(mean(exp(score/tau))) times tau with stable centering,tau=1.0,no,moderate,frozen
+u2_max,fixed_order,mean of pairwise subset maxima,order=2;subset_cap=128,yes,controlled under IID scores,frozen
+u3_top2,fixed_order,mean of within-triplet top-2 means,order=3;k=2;subset_cap=128,yes,controlled under IID scores,frozen
+u4_top3,fixed_order,mean of within-quadruplet top-3 means,order=4;k=3;subset_cap=128,yes,controlled under IID scores,frozen

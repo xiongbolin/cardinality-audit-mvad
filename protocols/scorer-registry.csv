@@ -1,0 +1,17 @@
+dataset,scorer_id,family,source_file,score_column_or_method,seed_scope,availability,role
+RAD,dinov2_knn,foundation_visual_knn,dinov2_vit_b14_visual_image_scores.csv,method=knn;score_z,single frozen run,required,primary visual scorer
+RAD,dinov2_if,foundation_visual_density,dinov2_vit_b14_visual_image_scores.csv,method=isolation_forest;score_z,single frozen run,required,visual scorer
+RAD,dinov2_ocsvm,foundation_visual_boundary,dinov2_vit_b14_visual_image_scores.csv,method=one_class_svm;score_z,single frozen run,required,visual scorer
+RAD,clip_visual,vision_language_visual,clip_vit_b16_robovlm_image_scores.csv,visual_knn_zscore,single frozen run,required,visual-language scorer
+RAD,clip_prompt_generic,vision_language_prompt,clip_vit_b16_robovlm_image_scores.csv,clip_zero_shot_generic,single frozen run,required,prompt-only control
+RAD,clip_fusion,vision_language_fusion,clip_vit_b16_robovlm_image_scores.csv,robovlm_fusion_knn,single frozen run,required,fusion scorer
+RAD,patchcore_r18,memory_bank_cnn,strong_baseline_image_scores.csv,method=PatchCore-style,single frozen run,required,strong baseline
+RAD,padim_r18,gaussian_cnn,strong_baseline_image_scores.csv,method=PaDiM-style,single frozen run,required,baseline
+RAD,winclip_style,vision_language_baseline,strong_baseline_image_scores.csv,method=WinCLIP-style,single frozen run,required,baseline
+RAD,anomalyclip_style,vision_language_prompt,strong_baseline_image_scores.csv,method=AnomalyCLIP-style prompts,single frozen run,required,baseline
+RAD,patchcore_wrn50,memory_bank_cnn,strong_baseline_wide_resnet50_2_image_scores.csv,method=PatchCore-style,single frozen run,required,strong baseline
+RAD,efficientad_style,teacher_student_cnn,efficientad_style_wide_resnet50_2_image_scores.csv,method=EfficientAD-style teacher-student,single frozen run,required,baseline
+Real-IAD,subspace_raw,foundation_subspace,existing Real-IAD DINOv2 feature matrix,per-view subspace residual,42;43;44,required,primary external scorer
+Real-IAD,subspace_loge,foundation_subspace_conformal,existing Real-IAD DINOv2 feature matrix,per-view calibrated log-e,42;43;44,required,primary external scorer
+Real-IAD,knn_raw,foundation_knn,existing Real-IAD DINOv2 feature matrix,per-view kNN distance,42;43;44,required,external scorer
+Real-IAD,knn_loge,foundation_knn_conformal,existing Real-IAD DINOv2 feature matrix,per-view calibrated log-e,42;43;44,required,external scorer
