@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: "Cardinality Audit for Multi-View Industrial Anomaly Detection"
+authors:
+  - family-names: "Xiong"
+    given-names: "Bailin"
+  - family-names: "Hu"
+    given-names: "Qiguo"
+version: 1.0.0
+message: "If you use this repository, please cite the associated manuscript."
