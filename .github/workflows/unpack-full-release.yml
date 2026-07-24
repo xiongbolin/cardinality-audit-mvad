@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - CARDINALITY_AUDIT_FULL_UPLOAD.zip
+      - release_chunks_final/READY
   workflow_dispatch:
 
 permissions:
@@ -19,24 +19,26 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Verify and unpack upload
+      - name: Reassemble and verify release
         shell: bash
         run: |
           set -euo pipefail
-          test -f CARDINALITY_AUDIT_FULL_UPLOAD.zip
-          echo "f1fbfb90486c75a73027eb330104a9a7607bfeb53ef5426d61bacb6e4e7f221a  CARDINALITY_AUDIT_FULL_UPLOAD.zip" | sha256sum -c -
+          test -f release_chunks_final/READY
+          test "$(find release_chunks_final -maxdepth 1 -name 'part-*.b64' | wc -l)" -eq 10
+          cat release_chunks_final/part-*.b64 | tr -d '\n\r' | base64 -d > CARDINALITY_AUDIT_FULL_RELEASE_v1.0.0.tar.xz
+          echo "b0cf3cbbbe4e2b0d0a88a48131c72db7008eeee65d39c591a16232480aaea1f1  CARDINALITY_AUDIT_FULL_RELEASE_v1.0.0.tar.xz" | sha256sum -c -
           rm -rf .release-unpack
           mkdir .release-unpack
-          unzip -q CARDINALITY_AUDIT_FULL_UPLOAD.zip -d .release-unpack
+          tar -xJf CARDINALITY_AUDIT_FULL_RELEASE_v1.0.0.tar.xz -C .release-unpack
           test -d .release-unpack/cardinality-audit-mvad
-          rsync -a --delete-excluded \
+          rsync -a \
             --exclude '.git/' \
             --exclude '.github/' \
             --exclude '__pycache__/' \
             --exclude '.pytest_cache/' \
             --exclude '*.pyc' \
             .release-unpack/cardinality-audit-mvad/ ./
-          rm -rf .release-unpack CARDINALITY_AUDIT_FULL_UPLOAD.zip release_parts release_chunks_v1
+          rm -rf .release-unpack CARDINALITY_AUDIT_FULL_RELEASE_v1.0.0.tar.xz release_chunks_final release_parts release_chunks_v1
 
       - name: Validate release contents
         shell: bash
