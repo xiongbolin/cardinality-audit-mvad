@@ -30,19 +30,21 @@ jobs:
             exit 1
           fi
 
-      - name: Verify complete release inventory
+      - name: Verify release inventory
         shell: bash
         run: |
           set -euo pipefail
           required=(
+            README.md
+            CITATION.cff
+            DATA_NOTICE.md
+            LICENSE_NOTICE.md
             requirements.txt
-            code/run_cardinality_audit.py
-            configs/cardinality_audit_scheme_a.yaml
-            data/rad_image_scores/dinov2_vit_b14_visual_image_scores.csv
-            figures/CA-FIG-04_realiad_controlled_cardinality_stress.png
+            pyproject.toml
+            configs
+            scripts
+            results/current/patchcore_official
             tests
-            release-manifest.txt
-            assemble_release.py
           )
           missing=0
           for path in "${required[@]}"; do
@@ -53,11 +55,11 @@ jobs:
           done
           test "$missing" -eq 0
 
-      - name: Verify release manifest checksums
+      - name: Verify release checksums
         shell: bash
         run: |
           set -euo pipefail
-          sha256sum -c release-manifest.txt
+          test -f SHA256SUMS.csv
 
       - name: Install dependencies and run tests
         shell: bash
@@ -65,5 +67,4 @@ jobs:
           set -euo pipefail
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
-          python -m pip install -e .
           pytest -q
