@@ -1,0 +1,19 @@
+category,asset_path,size_bytes,sha256,distribution
+binderclip,anomalib_runs/binderclip/Patchcore/rad_binderclip/v0/weights/lightning/model.ckpt,128228847,f682bb0fcc3f58f8d158be101368e0626ec506cde6ec21601b3ea058199db3bc,GitHub Release asset via six source ZIP parts
+binderclip2,anomalib_runs/binderclip2/Patchcore/rad_binderclip2/v0/weights/lightning/model.ckpt,128228847,8c4ee3e7cd8038848fad9d02e7a4d28103d50533b029236b75b8c48129553580,GitHub Release asset via six source ZIP parts
+bowl_upright,anomalib_runs/bowl_upright/Patchcore/rad_bowl_upright/v0/weights/lightning/model.ckpt,128228847,ae7eb8ae393b0d33a4e9908cf8cda9fd1c20b84f1a0d55e020f6cfa3212fe8e4,GitHub Release asset via six source ZIP parts
+box,anomalib_runs/box/Patchcore/rad_box/v0/weights/lightning/model.ckpt,128228847,d785d67bcc9ee0985ed83fc7abba4911622d9e9526bb1dc75f0cceef3b53d536,GitHub Release asset via six source ZIP parts
+can,anomalib_runs/can/Patchcore/rad_can/v0/weights/lightning/model.ckpt,128228847,c8fd96808f9e55626ffc125e3b7ee6dc13dc45d3207bd7bfdf183370f121e151,GitHub Release asset via six source ZIP parts
+charger,anomalib_runs/charger/Patchcore/rad_charger/v0/weights/lightning/model.ckpt,128228847,e58b596c7189c2d276b2a451b40a7c9a55c25953ffe4a0cec58555b29e132499,GitHub Release asset via six source ZIP parts
+cup1_upright,anomalib_runs/cup1_upright/Patchcore/rad_cup1_upright/v0/weights/lightning/model.ckpt,128228847,5111ad1a8c5de5cf7fee22744a8f3c68f500069f21117cda9f1a9e70d9c30f77,GitHub Release asset via six source ZIP parts
+cup2_upright,anomalib_runs/cup2_upright/Patchcore/rad_cup2_upright/v0/weights/lightning/model.ckpt,128228847,801f4ac9e8df565cbd476964fce5e4383faf91ed54016004fd05cc2f2e060d90,GitHub Release asset via six source ZIP parts
+cup2_upright2,anomalib_runs/cup2_upright2/Patchcore/rad_cup2_upright2/v0/weights/lightning/model.ckpt,128228847,73e46ff9353e737c915868d4933af3c267f645b44da9285a2898e51b62903dc0,GitHub Release asset via six source ZIP parts
+cup2_upright3,anomalib_runs/cup2_upright3/Patchcore/rad_cup2_upright3/v0/weights/lightning/model.ckpt,128228847,8cc4d95ee13394a722122a0524653e2371f3b1259e26336f3eacf50ae1c8e6de,GitHub Release asset via six source ZIP parts
+gluebottle,anomalib_runs/gluebottle/Patchcore/rad_gluebottle/v0/weights/lightning/model.ckpt,128228847,9509fad8547652ce0e04b4e62c8470c37a000393ca09bd171815a03f3924372d,GitHub Release asset via six source ZIP parts
+gluebottle2,anomalib_runs/gluebottle2/Patchcore/rad_gluebottle2/v0/weights/lightning/model.ckpt,128228847,aedb5bb03eae9713a7daf94bab53c50dfb98fde6e6019f3efe4b854b9d75b89a,GitHub Release asset via six source ZIP parts
+phonecase,anomalib_runs/phonecase/Patchcore/rad_phonecase/v0/weights/lightning/model.ckpt,128228847,7648386c404db20d54f63e97e8af7eda12aade4b2ebc4a1b4f5efbfc8fe41917,GitHub Release asset via six source ZIP parts
+phonecase2,anomalib_runs/phonecase2/Patchcore/rad_phonecase2/v0/weights/lightning/model.ckpt,128228847,f4118c2dc80931dfd019eaf54988b34aebda2b09dd591c2835c2c9f5944faf30,GitHub Release asset via six source ZIP parts
+rubberduck,anomalib_runs/rubberduck/Patchcore/rad_rubberduck/v0/weights/lightning/model.ckpt,128228847,82ee210f2d5fe99012742a889b2b02bc4407b28fb2810013513e6e918f143864,GitHub Release asset via six source ZIP parts
+spoon_upright,anomalib_runs/spoon_upright/Patchcore/rad_spoon_upright/v0/weights/lightning/model.ckpt,128228847,88c2f810b232e368ac680faaeb1681b2b3709dec41936c9f480e442765524055,GitHub Release asset via six source ZIP parts
+spraybottle2,anomalib_runs/spraybottle2/Patchcore/rad_spraybottle2/v0/weights/lightning/model.ckpt,128228847,200744905a2f9589e728b0bd75ff954cdaa1014886c407a703aac2f66bd9c9c4,GitHub Release asset via six source ZIP parts
+tennisball,anomalib_runs/tennisball/Patchcore/rad_tennisball/v0/weights/lightning/model.ckpt,128228847,fedf0ab55d7d3b909fa89b9a75aff545e3d162a0695f4812761eddac25559065,GitHub Release asset via six source ZIP parts
