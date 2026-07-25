@@ -26,7 +26,9 @@ jobs:
           grep -q "Version 2.0, January 2004" LICENSE
           grep -q "Copyright Amazon.com, Inc. or its affiliates" NOTICE
           grep -q "Apache License 2.0" PATCHCORE_ATTRIBUTION.md
-          ! grep -R --line-number --exclude-dir=.git --exclude=RELEASE_CHECKLIST.md "Code is released under the MIT License" .
+          if grep -R --line-number --exclude-dir=.git --exclude-dir=.github --exclude=RELEASE_CHECKLIST.md "Code is released under the MIT License" .; then
+            exit 1
+          fi
 
       - name: Verify complete release inventory
         shell: bash
