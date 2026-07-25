@@ -1,0 +1,27 @@
+normal_prompts:
+  generic:
+    - "a normal object observed by a robotic arm"
+    - "a defect-free object in a robotic manipulation scene"
+    - "a correctly assembled object in a robot workspace"
+    - "a normal robotic inspection image"
+    - "a clean and intact object manipulated by a robot"
+anomaly_prompts:
+  generic:
+    - "an anomalous object observed by a robotic arm"
+    - "a defective object in a robotic manipulation scene"
+    - "a damaged object in a robot workspace"
+    - "a missing component in a robotic inspection image"
+    - "a broken or misplaced object manipulated by a robot"
+  defect_aware:
+    missing:
+      - "a {category} with a missing component"
+      - "a {category} with a missing part in a robotic inspection image"
+    scratched:
+      - "a {category} with visible scratches"
+      - "a scratched {category} observed by a robotic arm"
+    squeezed:
+      - "a squeezed or deformed {category}"
+      - "a {category} with deformation in a robot workspace"
+    stained:
+      - "a stained or contaminated {category}"
+      - "a {category} with surface contamination"

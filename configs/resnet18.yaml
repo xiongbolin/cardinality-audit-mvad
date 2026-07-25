@@ -1,0 +1,20 @@
+seed: 42
+data:
+  root: data/RAD
+  image_extensions: [".png", ".jpg", ".jpeg", ".bmp", ".webp"]
+model:
+  family: timm
+  name: resnet18
+  pretrained: true
+  cache_dir: .cache/huggingface/timm
+  batch_size: 64
+  device: auto
+  num_workers: 0
+features:
+  output: results/features/resnet18_rad.npz
+baselines:
+  image_metrics_output: results/tables/resnet18_visual_image_metrics.csv
+  image_scores_output: results/tables/resnet18_visual_image_scores.csv
+  multiview_metrics_output: results/tables/resnet18_visual_multiview_metrics.csv
+  multiview_scores_output: results/tables/resnet18_visual_multiview_scores.csv
+  methods: ["knn", "isolation_forest", "one_class_svm"]

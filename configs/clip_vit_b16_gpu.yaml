@@ -1,0 +1,19 @@
+seed: 42
+data:
+  root: data/RAD
+  image_extensions: [".png", ".jpg", ".jpeg", ".bmp", ".webp"]
+model:
+  family: open_clip
+  name: ViT-B-16
+  pretrained: laion2b_s34b_b88k
+  cache_dir: .cache/huggingface/open_clip
+  batch_size: 64
+  device: auto
+  num_workers: 0
+features:
+  output: results/features/clip_vit_b16_rad.npz
+baselines:
+  output: results/tables/clip_vit_b16_baselines.csv
+  methods: ["knn", "isolation_forest", "one_class_svm"]
+  knn_k: 5
+  contamination: auto
