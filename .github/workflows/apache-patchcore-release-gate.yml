@@ -1,0 +1,67 @@
+name: Apache-2.0 PatchCore release gate
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  release-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Verify licensing and attribution
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f LICENSE
+          test -f NOTICE
+          test -f PATCHCORE_ATTRIBUTION.md
+          grep -q "Apache License" LICENSE
+          grep -q "Version 2.0, January 2004" LICENSE
+          grep -q "Copyright Amazon.com, Inc. or its affiliates" NOTICE
+          grep -q "Apache License 2.0" PATCHCORE_ATTRIBUTION.md
+          ! grep -R --line-number --exclude-dir=.git --exclude=RELEASE_CHECKLIST.md "Code is released under the MIT License" .
+
+      - name: Verify complete release inventory
+        shell: bash
+        run: |
+          set -euo pipefail
+          required=(
+            requirements.txt
+            code/run_cardinality_audit.py
+            configs/cardinality_audit_scheme_a.yaml
+            data/rad_image_scores/dinov2_vit_b14_visual_image_scores.csv
+            figures/CA-FIG-04_realiad_controlled_cardinality_stress.png
+            tests
+            release-manifest.txt
+            assemble_release.py
+          )
+          missing=0
+          for path in "${required[@]}"; do
+            if [ ! -e "$path" ]; then
+              echo "::error file=$path::Required release item is missing"
+              missing=1
+            fi
+          done
+          test "$missing" -eq 0
+
+      - name: Verify release manifest checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha256sum -c release-manifest.txt
+
+      - name: Install dependencies and run tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install -e .
+          pytest -q
