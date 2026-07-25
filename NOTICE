@@ -1,0 +1,11 @@
+Copyright and attribution notices
+
+This repository contains original audit and analysis code developed for the Cardinality Audit project.
+
+PatchCore reference implementation attribution:
+
+PatchCore: Towards Total Recall in Industrial Anomaly Detection
+Copyright Amazon.com, Inc. or its affiliates.
+Licensed under the Apache License, Version 2.0.
+
+No PatchCore source code, pretrained weights, or third-party model assets are redistributed unless explicitly stated in the corresponding release files.
