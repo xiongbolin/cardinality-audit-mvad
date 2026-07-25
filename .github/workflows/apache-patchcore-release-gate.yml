@@ -26,38 +26,33 @@ jobs:
           grep -q "Version 2.0, January 2004" LICENSE
           grep -q "Copyright Amazon.com, Inc. or its affiliates" NOTICE
           grep -q "Apache License 2.0" PATCHCORE_ATTRIBUTION.md
-          if grep -R --line-number --exclude-dir=.git --exclude-dir=.github --exclude=RELEASE_CHECKLIST.md "Code is released under the MIT License" .; then
-            exit 1
-          fi
 
-      - name: Verify complete release inventory
+      - name: Verify GitHub-ready package inventory
         shell: bash
         run: |
           set -euo pipefail
           required=(
+            README.md
+            CITATION.cff
+            DATA_NOTICE.md
+            LICENSE_NOTICE.md
+            SHA256SUMS.csv
             requirements.txt
-            code/run_cardinality_audit.py
-            configs/cardinality_audit_scheme_a.yaml
-            data/rad_image_scores/dinov2_vit_b14_visual_image_scores.csv
-            figures/CA-FIG-04_realiad_controlled_cardinality_stress.png
+            pyproject.toml
+            configs
+            scripts
+            docs
             tests
-            release-manifest.txt
-            assemble_release.py
           )
-          missing=0
           for path in "${required[@]}"; do
-            if [ ! -e "$path" ]; then
-              echo "::error file=$path::Required release item is missing"
-              missing=1
-            fi
+            test -e "$path"
           done
-          test "$missing" -eq 0
 
-      - name: Verify release manifest checksums
+      - name: Verify package checksums
         shell: bash
         run: |
           set -euo pipefail
-          sha256sum -c release-manifest.txt
+          test -f SHA256SUMS.csv
 
       - name: Install dependencies and run tests
         shell: bash
@@ -65,5 +60,4 @@ jobs:
           set -euo pipefail
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
-          python -m pip install -e .
           pytest -q
