@@ -1,0 +1,2 @@
+method,implementation,anomalib_version_required,protocol,test_images,test_anomaly,auroc,auprc,f1_best_diagnostic,best_threshold_diagnostic,backbone,layers,coreset_sampling_ratio,num_neighbors,image_size,center_crop_size,f1_role
+Official Anomalib PatchCore 2.4.0,anomalib.models.Patchcore,2.4.0,"Protocol A image-level, per-category normal-only PatchCore training",2985,2823,0.8294520757621477,0.9889990554024957,0.9722748407094886,13.433882713317871,wide_resnet50_2,layer2+layer3,0.1,9,256x256,224x224,diagnostic best threshold on the same test scores; not a deployment threshold

@@ -1,0 +1,2 @@
+pooled_auroc,pooled_auprc,category_macro_auroc,category_macro_auprc,category_auroc_std,category_count,test_images
+0.8294520757621477,0.9889990554024957,0.827871332521187,0.9802170916163987,0.1449063626604631,18,2985

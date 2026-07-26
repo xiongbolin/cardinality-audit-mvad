@@ -1,9 +1,18 @@
 cff-version: 1.2.0
+message: "If you use this software or its released PatchCore audit tables, please cite the accompanying manuscript."
 title: "Cardinality Audit for Multi-View Industrial Anomaly Detection"
+type: software
+version: 1.0.0
+license: Apache-2.0
+repository-code: "https://github.com/xiongbolin/cardinality-audit-mvad"
 authors:
   - family-names: "Xiong"
     given-names: "Bailin"
   - family-names: "Hu"
     given-names: "Qiguo"
-version: 1.0.0
-message: "If you use this repository, please cite the associated manuscript."
+  - family-names: "Du"
+    given-names: "Kai"
+  - family-names: "Tang"
+    given-names: "Jinhui"
+  - family-names: "Wang"
+    given-names: "Renxiang"
